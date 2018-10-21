@@ -1,0 +1,98 @@
+body {
+	.home-header {
+		height: 100vh;
+		position: relative;
+		width: 100%;
+		overflow: hidden;
+		display: table;
+
+		&__bg {
+			width: 100%;
+			height: 100%;
+
+			&--left, &--right {
+				float: left;
+				height: 100%;
+				position: relative;
+			}
+
+			&--left {
+				width: 40%;
+				background-color: @Lapis;
+
+				&::after {
+					content: "";
+				    top: 0;
+				    height: calc(100% + 1px);
+				    right: -40%;
+				    width: 100%;
+				    -webkit-transform-origin: top left;
+				    -ms-transform-origin: top left;
+				    transform-origin: top left;
+				    -webkit-transform: skewX(-15deg) skewY(0deg);
+				    -ms-transform: skewX(-15deg) skewY(0deg);
+				    transform: skewX(-15deg) skewY(0deg);
+				        position: absolute;
+    background-color: @Lapis;
+        			z-index: 10;
+				}
+			}
+
+			&--right {
+				width: 60%;
+				background-color: lighten(@Lapis, 30%);
+			}
+		}	
+
+		&__content {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 15;
+			display: flex;
+			flex-wrap: wrap;
+
+			&--inner {
+				max-width: 1366px;
+				margin: 0 auto;
+				width: 100%;
+				padding: 50px 25px;
+				display: flex;
+				align-items: center;
+				flex-wrap: wrap;
+
+				.left, .right {
+					float: left;
+				}
+
+				.left {
+					width: 50%;
+
+					h1 {
+						color: #FFF;
+						font-family: UbuntuBold;
+						font-size: 52px;
+						margin: 0;
+						margin-bottom: 25px;
+					}
+
+					p {
+						color: #FFF;
+						font-family: UbuntuLight;
+					}
+				}
+				.right {
+					width: 50%;
+					img {
+						width: 100%;
+						animation: down_up 2s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+					}
+				}
+			}
+
+			
+		}
+	}
+}

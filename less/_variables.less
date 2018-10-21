@@ -1,0 +1,78 @@
+@xs: ~"only screen and (min-width: 480px)";  
+@sm: ~"only screen and (min-width: 768px)"; 
+@md: ~"only screen and (min-width: 992px)";
+@lg: ~"only screen and (min-width: 1200px)";
+
+/* Coolors Exported Palette - coolors.co/247ba0-70c1b3-b2dbbf-f3ffbd-ff1654 */
+
+/* RGB */
+@Lapis: rgba(36, 123, 160, 1);
+@Green: rgba(112, 193, 179, 1);
+@Sea: rgba(178, 219, 191, 1);
+@Pale: rgba(243, 255, 189, 1);
+@Awesome: rgba(255, 22, 84, 1);
+
+// USE
+body {
+  .preloader {
+  	position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    height: calc(100vh + 104px);
+    transform: translateX(100%);
+    display: block;
+  }
+}
+
+body.is_entering {
+	.preloader {
+		animation: exiting_overlay .7s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+}
+
+body.is_exiting {
+	.preloader {
+		animation: entering_overlay .7s ease;
+	}
+}
+
+@font-face {
+	font-family: UbuntuBold;
+	src: url("http://localhost/media_portfolio/fonts/Ubuntu-Bold.ttf");
+}
+@font-face {
+	font-family: UbuntuLight;
+	src: url("http://localhost/media_portfolio/fonts/Ubuntu-Light.ttf");
+}
+
+@keyframes down_up{
+	0% {
+		opacity: 0;
+		transform: translate(0, 50%);
+	}
+	100% {
+		opacity: 1;
+		transform: translate(0,0);
+	}
+}
+
+@keyframes exiting_overlay{
+	0%{
+		transform:translate3d(100%, 0, 0)
+	}
+	100%{
+		transform:translate3d(0, 0, 0)
+	}
+}
+
+@keyframes entering_overlay{
+	0%{
+		transform:translate3d(0, 0, 0)
+	}
+	100%{
+		transform:translate3d(-100%, 0, 0)
+	}
+}
