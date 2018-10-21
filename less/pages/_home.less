@@ -5,6 +5,7 @@ body {
 		width: 100%;
 		overflow: hidden;
 		display: table;
+		z-index: -1;
 
 		&__bg {
 			width: 100%;
@@ -17,30 +18,46 @@ body {
 			}
 
 			&--left {
-				width: 40%;
+				width: 100%;
+				height: 50%;
 				background-color: @Lapis;
+
+				@media @md {
+					height: 100%;
+					width: 40%;
+				}
 
 				&::after {
 					content: "";
-				    top: 0;
-				    height: calc(100% + 1px);
-				    right: -40%;
+				    bottom: 0;
+				    height: 100%;
+				    right: 0;
 				    width: 100%;
-				    -webkit-transform-origin: top left;
-				    -ms-transform-origin: top left;
-				    transform-origin: top left;
-				    -webkit-transform: skewX(-15deg) skewY(0deg);
-				    -ms-transform: skewX(-15deg) skewY(0deg);
-				    transform: skewX(-15deg) skewY(0deg);
-				        position: absolute;
-    background-color: @Lapis;
+				    transform-origin: right;
+				    transform: skewX(0deg) skewY(-5deg);
+				    position: absolute;
+    				background-color: @Lapis;
         			z-index: 10;
+
+        			@media @md {
+        				transform-origin: bottom;
+        				transform: skewX(-15deg) skewY(0deg);
+        				top: 0;
+        				bottom: unset;
+        				height: calc(100% + 1px);
+        			}
 				}
 			}
 
 			&--right {
-				width: 60%;
+				width: 100%;
+				height: 50%;
 				background-color: lighten(@Lapis, 30%);
+
+				@media @md {
+					width: 60%;
+					height: 100%;
+				}
 			}
 		}	
 
@@ -51,48 +68,185 @@ body {
 			width: 100%;
 			height: 100%;
 			z-index: 15;
-			display: flex;
-			flex-wrap: wrap;
 
 			&--inner {
-				max-width: 1366px;
-				margin: 0 auto;
-				width: 100%;
-				padding: 50px 25px;
 				display: flex;
-				align-items: center;
-				flex-wrap: wrap;
+			    flex-direction: column;
+			    justify-content: center;
+			    align-items: center;
+
+				@media @md {
+					flex-direction: row;
+					max-width: 1920px;
+					margin: 0 auto;
+					width: 100%;
+					height: 100%;
+				}
 
 				.left, .right {
 					float: left;
+					display: flex;
+
+					@media @md {
+						display: unset;
+					}
 				}
 
 				.left {
-					width: 50%;
+					width: 100%;
+					text-align: center;
+					height: 50vh;
+					align-items: center;
+					justify-content: center;
+					flex-direction: column;
 
-					h1 {
-						color: #FFF;
-						font-family: UbuntuBold;
-						font-size: 52px;
-						margin: 0;
-						margin-bottom: 25px;
+					@media @md {
+						width: 90%;
+						height: auto;
+						text-align: left;
+						width: 50%;
 					}
 
-					p {
-						color: #FFF;
-						font-family: UbuntuLight;
+					&__inner {
+						width: 68%;
+						margin: 0 auto;
+
+						h1 {
+							color: #FFF;
+							font-family: UbuntuBold;
+							font-size: 38px;
+							margin: 0;
+							margin-bottom: 25px;
+
+							@media @xs {
+								font-size: 52px;
+							}
+
+							@media @lg {
+								font-size: 72px;
+							}
+						}
+
+						p {
+							color: #FFF;
+							font-family: UbuntuLight;
+							font-size: 22px;
+						}
 					}
 				}
 				.right {
-					width: 50%;
+					align-items: center;	
+					width: 100%;
+					text-align: center;
+					height: 50vh;
+					justify-content: center;
+
+					@media @md {
+						height: auto;
+						padding: 0 0 0 50px;
+						width: 50%;
+					}
+
 					img {
-						width: 100%;
+						max-width: 720px;
+						margin: 0 auto;
+						width: 90%;
+						height: 30vh;
 						animation: down_up 2s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+
+						@media @lg {
+							height: 50vh;
+						}
 					}
 				}
 			}
+		}
+	}
 
-			
+	.portfolio-items {
+		position: relative;
+		overflow: hidden;
+		width: 90%;
+		margin: 0 auto;
+		margin-top: -25px;
+		display: flex;
+		margin-bottom: 25px;
+
+		@media @md {
+			margin-top: -50px;
+		}
+
+		&__inner {
+			max-width: 1024px;
+			width: 100%;
+			padding: 25px 15px;
+			background-color: #f1f1f1;
+			margin: 0 auto;
+			border-radius: 25px;
+			display: flex;
+			flex-wrap: wrap;
+			z-index: 9999;
+
+			&--item {
+				flex-shrink: 0;
+				float: left;
+				width: ~'calc(100% - 25px)';
+				height: 16.5vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				background-color: #FFF;
+				margin-left: 12.5px;
+				margin-right: 12.5px;
+				margin-bottom: 25px;
+				border-radius: 10px;
+
+				@media @sm {
+					width: ~'calc(50% - 25px)';
+				}
+
+				@media @md {
+					width: ~'calc(33.3333% - 25px)';
+				}
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+
+				&:nth-last-child(3), &:nth-last-child(2), &:nth-last-child(1) {
+					@media @md {
+						margin-bottom: 0;
+					}
+				}
+
+				.inner {
+					padding: 15px;
+				}
+
+				h3 {
+					color: #000;
+					font-family: UbuntuBold;
+					font-size: 16px;
+					margin: 0;
+					margin-bottom: 15px;
+
+					@media @md {
+						font-size: 22px;
+					}
+				}
+
+				a {
+					color: @Awesome;
+					font-family: UbuntuBold;
+					text-decoration: none;
+					transition: 0.5s;
+
+					&:hover, &:focus {
+						color: @Lapis;
+					}
+				}
+			}
 		}
 	}
 }

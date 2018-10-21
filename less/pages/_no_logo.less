@@ -1,0 +1,113 @@
+body {
+	.logo-item {
+		animation: down_up 1s forwards cubic-bezier(0.215, 0.61, 0.355, 1);
+
+		&__header {
+			height: 300px;
+			width: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: @Sea;
+			box-shadow: 0 8px 6px -6px rgba(0,0,0,0.5);
+
+			&--content {
+				.inner {
+					padding: 0 25px;
+
+					h1 {
+						color: #FFF;
+						font-family: UbuntuBold;
+						font-size: 32px;
+						text-align: center;
+
+						@media @sm {
+							font-size: 48px;
+						}
+					}
+				}
+			}
+		}
+
+		&__content {
+			background-color: #f1f1f1;
+			border-radius: 25px;
+			min-height: 500px;
+			width: 90%;
+			margin: 0 auto;
+			margin-top: -50px;
+			box-shadow: 0 8px 6px -6px rgba(0,0,0,0.5);
+
+			&--inner {
+				max-width: 1024px;
+				margin: 0 auto;
+				padding: 50px 25px;
+				display: flex;
+				flex-wrap: wrap;
+
+				.terug {
+					width: 100%;
+					a {
+						color: #FFF;
+						background-color: @Sea;
+						text-decoration: none;
+						font-family: UbuntuBold;
+						padding: 5px 15px;
+						border: 3px solid @Sea;
+						transition: 0.5s;
+						border-radius: 5px;
+						display: inline-block;
+						margin-bottom: 25px;
+
+						&:hover, &:focus {
+							color: @Sea;
+							background-color: transparent;
+						}
+					}
+				}
+
+				.left, .right {
+					float: left;
+					width: 100%;
+
+					@media @sm {
+						width: ~'calc(50% - 25px)';
+					}
+				}
+
+				.left {
+					@media @sm {
+						margin-right: 25px;
+					}
+
+					h2 {
+						font-family: UbuntuBold;
+						margin: 0;
+						margin-bottom: 15px;
+					}
+
+					p {
+						color: #000;
+						font-family: UbuntuLight;
+					}
+				}
+
+				.right {
+					margin-top: 25px;
+					@media @sm {
+						margin-top: 0;
+						margin-left: 25px;
+					}
+
+					img {
+						width: 100%;
+						object-fit: cover;
+						border-radius: 10px;
+						box-shadow: 0 8px 6px -6px rgba(0,0,0,0.5);
+						min-height: 200px;
+					}
+				}
+			}
+		}
+	}
+}
